@@ -221,6 +221,15 @@ describe('Form Controller', function () {
             res.locals.options.should.eql(form.options);
         });
 
+        it('clones form options to res.locals to prevent mutation', function () {
+            form.locals = function (req, res) {
+                res.locals.options.fields.field = 'mutated';
+            };
+            form.get(req, res, cb);
+            res.locals.options.fields.field.should.equal('mutated');
+            form.options.fields.field.should.equal('name');
+        });
+
         it('emits "complete" event if form has no fields', function () {
             form.options.fields = {};
             form.get(req, res, cb);
