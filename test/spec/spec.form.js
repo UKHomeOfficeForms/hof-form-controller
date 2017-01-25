@@ -225,7 +225,7 @@ describe('Form Controller', function () {
             };
             cb = sinon.stub();
             sinon.stub(Form.prototype, 'getValues').yields(null, {});
-            sinon.stub(Form.prototype, 'getErrors').returns({});
+            sinon.stub(Form.prototype, 'getErrors').yields(null, {});
             sinon.stub(Form.prototype, 'render');
         });
 
@@ -260,7 +260,7 @@ describe('Form Controller', function () {
         });
 
         it('passes any errors to the rendered template', function () {
-            form.getErrors.returns({ field: { message: 'error' } });
+            form.getErrors.yields(null, { field: { message: 'error' } });
             form.get(req, res, cb);
             res.locals.errors.should.eql({ field: { message: 'error' } });
         });
