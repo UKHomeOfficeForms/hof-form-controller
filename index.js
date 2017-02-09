@@ -1,8 +1,8 @@
-var Form = require('./lib/form');
+var Controller = require('./lib/controller');
 
-Form.validators = require('./lib/validation/validators');
-Form.formatters = require('./lib/formatting/formatters');
+Controller.validators = require('./lib/validation/validators');
+Controller.formatters = require('./lib/formatting/formatters');
 
-Form.Error = require('./lib/error');
+Controller.Error = require('./lib/error');
 
-module.exports = Form;
+module.exports = Controller;
