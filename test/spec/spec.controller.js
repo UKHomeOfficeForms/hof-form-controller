@@ -4,6 +4,7 @@ const _ = require('lodash');
 const response = require('reqres').res;
 const request = require('reqres').req;
 const proxyquire = require('proxyquire');
+const ErrorClass = require('../../lib/error');
 
 let BaseController = require('../../lib/base-controller');
 
@@ -22,7 +23,7 @@ describe('lib/base-controller', () => {
 
   it('sets the correct error class to the instance', () => {
     controller = new Controller({});
-    controller.Error.should.be.equal(require('../../lib/error'));
+    controller.Error.should.be.equal(ErrorClass);
   });
 
   afterEach(() => {
