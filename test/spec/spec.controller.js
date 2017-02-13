@@ -20,6 +20,11 @@ describe('lib/base-controller', () => {
     sinon.stub(BaseController.prototype, 'locals').returns({foo: 'bar'});
   });
 
+  it('sets the correct error class to the instance', () => {
+    controller = new Controller({});
+    controller.Error.should.be.equal(require('../../lib/error'));
+  });
+
   afterEach(() => {
     BaseController.prototype.use.restore();
     BaseController.prototype.locals.restore();
