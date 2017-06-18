@@ -213,6 +213,71 @@ describe('Form Controller', () => {
 
   });
 
+  describe('filterFields', () => {
+
+    let form;
+    let req;
+    let res;
+    let cb;
+
+    beforeEach(() => {
+      form = new Form({
+        template: 'index',
+        next: '/next',
+        fields: {
+          field: 'name'
+        }
+      });
+      req = request({
+        path: '/index',
+        baseUrl: '/base',
+        form: {
+          options: {}
+        }
+      });
+      res = {
+        render: sinon.stub(),
+        locals: {}
+      };
+      cb = sinon.stub();
+      sinon.spy(form, '_filterFields');
+    });
+
+    it('is called as part of `get` pipeline', () => {
+      form.get(req, res, cb);
+      form._filterFields.should.have.been.calledOnce.and.calledWith(req, res);
+    });
+
+    it('is called as part of `post` pipeline', () => {
+      form.post(req, res, cb);
+      form._filterFields.should.have.been.calledOnce.and.calledWith(req, res);
+    });
+
+    it('filters fields if useWhen is provided and not satisfied', () => {
+      req.form.options.fields = {
+        'a-field': {
+          useWhen: {
+            field: 'b-field',
+            value: 'true'
+          }
+        },
+        'another-field': {
+          useWhen: 'c-field'
+        }
+      };
+      req.sessionModel = {
+        get: sinon.stub(),
+        unset: sinon.stub()
+      };
+      req.sessionModel.get.withArgs('b-field').returns('false');
+      req.sessionModel.get.withArgs('c-field').returns('true');
+      form._filterFields(req, res, cb);
+      req.form.options.fields.should.not.have.property('a-field');
+      req.form.options.fields.should.have.property('another-field');
+    });
+
+  });
+
   describe('get', () => {
 
     let form;
