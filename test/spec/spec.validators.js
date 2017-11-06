@@ -28,7 +28,8 @@ describe('Validators', () => {
     describe('invalid values', () => {
       const inputs = [
         undefined,
-        ''
+        '',
+        '     '
       ];
       inputs.forEach(i => {
         it(testName(i), () => {
