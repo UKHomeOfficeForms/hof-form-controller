@@ -24,7 +24,7 @@
   "homepage": "https://github.com/UKHomeOfficeForms/hof-form-controller",
   "dependencies": {
     "debug": "^2.6.9",
-    "deprecate": "^1.0.0",
+    "deprecate": "^1.1.1",
     "express": "^4.17.1",
     "hof-behaviour-hooks": "^1.0.2",
     "hof-behaviour-session": "^1.0.1",
