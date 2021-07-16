@@ -30,7 +30,7 @@
     "hof-behaviour-session": "^1.0.1",
     "hogan.js": "^3.0.2",
     "i18n-lookup": "^0.1.0",
-    "libphonenumber-js": "^1.8.5",
+    "libphonenumber-js": "^1.9.20",
     "lodash": "^4.17.15",
     "mixwith": "^0.1.1",
     "moment": "^2.24.0",
