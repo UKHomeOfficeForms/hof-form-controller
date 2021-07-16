@@ -33,7 +33,7 @@
     "libphonenumber-js": "^1.8.5",
     "lodash": "^4.17.15",
     "mixwith": "^0.1.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.1",
     "mustache": "^2.3.0",
     "underscore": "^1.13.1"
   },
