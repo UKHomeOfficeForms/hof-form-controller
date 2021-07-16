@@ -31,7 +31,7 @@
     "hogan.js": "^3.0.2",
     "i18n-lookup": "^0.1.0",
     "libphonenumber-js": "^1.8.5",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mixwith": "^0.1.1",
     "moment": "^2.24.0",
     "mustache": "^2.3.0",
